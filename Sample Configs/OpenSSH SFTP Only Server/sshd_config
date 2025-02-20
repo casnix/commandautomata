@@ -1,0 +1,21 @@
+Ciphers aes128-ctr,aes128-gcm@openssh.com,aes192-ctr,aes256-ctr,aes256-gcm@openssh.com,chacha20-poly1305@openssh.com
+KexAlgorithms curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,diffie-hellman-group16-sha512,diffie-hellman-group18-sha512,ecdh-sha2-nistp521
+MACs umac-128-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,hmac-sha2-256
+
+ForceCommand internal-sftp 
+Subsystem sftp sftp-server.exe -d "C:\\SFTP_Root\\"
+
+PermitTunnel no 
+AllowAgentForwarding no 
+AllowTcpForwarding no
+X11Forwarding no 
+AllowUsers sftp_network_user1 sftp_network_user2
+TCPKeepAlive no
+ClientAliveInterval 30
+ClientAliveCountMax 240
+
+Match User sftp_network_user1
+ChrootDirectory "C:\\SFTP_Root\\sftp_network_user1"
+
+Match User sftp_network_user2
+ChrootDirectory "C:\\SFTP_Root\\sftp_network_user2"
